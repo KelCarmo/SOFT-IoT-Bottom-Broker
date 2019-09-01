@@ -1,4 +1,4 @@
-package br.ufba.dcc.wiser.soft_iot.mapping_devices;
+package br.ufba.dcc.wiser.soft_iot.broker_bottom;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class ControllerImpl implements Controller{
 		 	clienteMQTT = new ClientMQTT("tcp://localhost:1883", null, null);
 	        clienteMQTT.iniciar();
 
-	        new Listener(clienteMQTT, "#", 0);
+	        new Listener(clienteMQTT, "#", 1);
 	}
 	
 	public void stop(){

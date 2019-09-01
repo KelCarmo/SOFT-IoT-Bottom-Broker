@@ -1,4 +1,4 @@
-package br.ufba.dcc.wiser.soft_iot.mapping_devices;
+package br.ufba.dcc.wiser.soft_iot.broker_bottom;
 
 import java.util.List;
 

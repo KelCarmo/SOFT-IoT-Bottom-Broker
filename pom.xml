@@ -5,9 +5,9 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>SOFT-IoT-Mapping-Device</name>
-	<artifactId>soft-iot-mapping-devices</artifactId>
-	<description>Module of SOFT-IoT plataform to map FoT-Devices in FoT-Gateway</description>
+	<name>SOFT-IoT-Bottom-Broker</name>
+	<artifactId>soft-iot-bottom-broker</artifactId>
+	<description>Module of SOFT-IoT plataform to bottom Broker</description>
 	<groupId>br.ufba.dcc.wiser.soft_iot</groupId>
 	<version>1.0.0</version>
 	<packaging>bundle</packaging>

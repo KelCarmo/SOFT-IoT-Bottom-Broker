@@ -20,10 +20,10 @@
  http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
 
 	<service id="serviceController" ref="entitiesController"
-		interface="br.ufba.dcc.wiser.soft_iot.mapping_devices.Controller" />
+		interface="br.ufba.dcc.wiser.soft_iot.broker_bottom.Controller" />
 
 	<bean id="entitiesController"
-		class="br.ufba.dcc.wiser.soft_iot.mapping_devices.ControllerImpl"
+		class="br.ufba.dcc.wiser.soft_iot.broker_bottom.ControllerImpl"
 		init-method="start" destroy-method="stop">
 		<property name="strJsonDevices" value="${DevicesConnected}" />
 		<property name="debugModeValue" value="${debugMode}" />
