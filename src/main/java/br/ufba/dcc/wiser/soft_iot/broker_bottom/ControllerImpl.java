@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.JAXBException;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,16 +21,27 @@ public class ControllerImpl implements Controller{
 	private String strJsonDevices;
 	private boolean debugModeValue;
 	private  ClientMQTT clienteMQTT;
+	private  ClientIotService clienteIot;
 	
 	public void start(){
 		//printlnDebug("Starting mapping of connected devices...");
 		//loadConnectedDevices(this.strJsonDevices);
 		// TODO Auto-generated method stub
+			this.clienteIot = new ClientIotService();
 		 	clienteMQTT = new ClientMQTT("tcp://localhost:1883", null, null);
 	        clienteMQTT.iniciar();
+	        this.loadConnectedDevices(clienteIot.getApiIot("http://localhost:8181/cxf/iot-service/devices"));
 
 	        new Listener(clienteMQTT, "#", 1);
+	        
 	}
+	
+	public static void main(String[] args) throws JAXBException {
+		ControllerImpl ctrl= new ControllerImpl();
+    	ctrl.start();
+//    	System.out.print(ctrl.getDeviceById("ufbaino01").getSensors());
+       
+    }
 	
 	public void stop(){
 		
