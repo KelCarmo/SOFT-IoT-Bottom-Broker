@@ -5,6 +5,8 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import br.ufba.dcc.wiser.soft_iot.broker_bottom.ClientIotService;
+
 
 
 public class Device {
@@ -13,6 +15,7 @@ public class Device {
 	private double longitude;
 	@JsonIgnoreProperties("device")
 	private List<Sensor> sensors;
+	private int score;
 	
 	public Device(){
 		
@@ -24,6 +27,12 @@ public class Device {
 				return sensor;
 		}
 		return null;
+	}
+	
+	public void getLastValueSensors (ClientIotService temp) {		
+		for (Sensor s: this.sensors) {
+			s.getValue(temp, this.id);
+		}
 	}
 	
 	public String getId() {
@@ -49,6 +58,14 @@ public class Device {
 	}
 	public void setSensors(List<Sensor> sensors) {
 		this.sensors = sensors;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 	
 	

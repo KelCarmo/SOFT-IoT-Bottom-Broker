@@ -1,7 +1,12 @@
 package br.ufba.dcc.wiser.soft_iot.entities;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import br.ufba.dcc.wiser.soft_iot.broker_bottom.ClientIotService;
 
 
 public class Sensor {
@@ -9,10 +14,20 @@ public class Sensor {
 	private String type;
 	private int collection_time;
 	private int publishing_time;
+	private int value; 
 	
+
 	
 	public Sensor(){
 		
+	}
+	
+	public void getValue(ClientIotService temp, String id_device) {
+		System.out.println("Device de id: " + id_device + " e Sensor de Id: " + this.id);
+		String response = temp.getApiIot("http://localhost:8181/cxf/iot-service/devices/" + id_device + "/" + this.id);
+		System.out.println(response);
+		JSONObject json = new JSONObject(response);
+		System.out.println(json.get("value"));
 	}
 	
 	public String getId() {
@@ -42,6 +57,14 @@ public class Sensor {
 
 	public void setPublishing_time(int publishing_time) {
 		this.publishing_time = publishing_time;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 	
 	

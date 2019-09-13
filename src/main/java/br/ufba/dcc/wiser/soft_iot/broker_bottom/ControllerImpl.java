@@ -23,23 +23,24 @@ public class ControllerImpl implements Controller{
 	private  ClientMQTT clienteMQTT;
 	private  ClientIotService clienteIot;
 	
+	
 	public void start(){
-		//printlnDebug("Starting mapping of connected devices...");
-		//loadConnectedDevices(this.strJsonDevices);
+		//printlnDebug("Starting mapping of connected devices...");		
 		// TODO Auto-generated method stub
 			this.clienteIot = new ClientIotService();
 		 	clienteMQTT = new ClientMQTT("tcp://localhost:1883", null, null);
 	        clienteMQTT.iniciar();
 	        this.loadConnectedDevices(clienteIot.getApiIot("http://localhost:8181/cxf/iot-service/devices"));
 
-	        new Listener(clienteMQTT, "#", 1);
+//	        new Listener(this, clienteMQTT, "FOG_REQ/#", 1);
 	        
 	}
 	
 	public static void main(String[] args) throws JAXBException {
 		ControllerImpl ctrl= new ControllerImpl();
     	ctrl.start();
-//    	System.out.print(ctrl.getDeviceById("ufbaino01").getSensors());
+    	ctrl.updateValuesSensors();
+    	System.out.print(ctrl.getListDevices().get(0).getSensors().get(0).getValue());
        
     }
 	
@@ -47,6 +48,12 @@ public class ControllerImpl implements Controller{
 		
 	        this.clienteMQTT.finalizar();
 	    
+	}
+	
+	public void updateValuesSensors() {
+		for (Device d: this.listDevices) {
+			d.getLastValueSensors(this.clienteIot);
+		}
 	}
 	
 	
