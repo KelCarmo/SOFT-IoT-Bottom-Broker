@@ -32,15 +32,15 @@ public class ControllerImpl implements Controller{
 	        clienteMQTT.iniciar();
 	        this.loadConnectedDevices(clienteIot.getApiIot("http://localhost:8181/cxf/iot-service/devices"));
 
-//	        new Listener(this, clienteMQTT, "FOG_REQ/#", 1);
+	        new Listener(this, clienteMQTT, "TOP_K_HEALTH/#", 1);
 	        
 	}
 	
 	public static void main(String[] args) throws JAXBException {
 		ControllerImpl ctrl= new ControllerImpl();
     	ctrl.start();
-    	ctrl.updateValuesSensors();
-    	System.out.print(ctrl.getListDevices().get(0).getSensors().get(0).getValue());
+//    	ctrl.updateValuesSensors();
+//    	System.out.print(ctrl.getListDevices().get(0).getSensors().get(0).getValue());
        
     }
 	

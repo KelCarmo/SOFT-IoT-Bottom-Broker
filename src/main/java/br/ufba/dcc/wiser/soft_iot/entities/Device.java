@@ -14,8 +14,7 @@ public class Device {
 	private double latitude;
 	private double longitude;
 	@JsonIgnoreProperties("device")
-	private List<Sensor> sensors;
-	private int score;
+	private List<Sensor> sensors;	
 	
 	public Device(){
 		
@@ -58,14 +57,6 @@ public class Device {
 	}
 	public void setSensors(List<Sensor> sensors) {
 		this.sensors = sensors;
-	}
-
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
 	}
 	
 	

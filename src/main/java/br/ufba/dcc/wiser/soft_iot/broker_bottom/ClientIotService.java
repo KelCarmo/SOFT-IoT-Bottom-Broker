@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.xml.bind.JAXBContext;
+//import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
 public class ClientIotService {
@@ -23,7 +23,7 @@ public class ClientIotService {
              if (con.getResponseCode() != HTTP_COD_SUCESSO) {
                  throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
              }
-  
+             System.out.println("Conectado com Broker de FOG com sucesso!!!");
              BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
              String s = null;
              String all = null;

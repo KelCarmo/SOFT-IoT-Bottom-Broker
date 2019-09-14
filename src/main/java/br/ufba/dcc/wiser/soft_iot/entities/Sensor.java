@@ -23,11 +23,11 @@ public class Sensor {
 	}
 	
 	public void getValue(ClientIotService temp, String id_device) {
-		System.out.println("Device de id: " + id_device + " e Sensor de Id: " + this.id);
+//		System.out.println("Device de id: " + id_device + " e Sensor de Id: " + this.id);
 		String response = temp.getApiIot("http://localhost:8181/cxf/iot-service/devices/" + id_device + "/" + this.id);
-		System.out.println(response);
+//		System.out.println(response);
 		JSONObject json = new JSONObject(response);
-		System.out.println(json.get("value"));
+		this.value = Integer.valueOf(json.getString("value"));
 	}
 	
 	public String getId() {

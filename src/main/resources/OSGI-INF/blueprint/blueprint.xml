@@ -20,7 +20,7 @@
  http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
 
 	<service id="serviceController" ref="entitiesController"
-		interface="br.ufba.dcc.wiser.soft_iot.broker_bottom.Controller" />
+		interface="br.ufba.dcc.wiser.soft_iot.broker_bottom.Controller" ></service>
 
 	<bean id="entitiesController"
 		class="br.ufba.dcc.wiser.soft_iot.broker_bottom.ControllerImpl"
@@ -30,11 +30,11 @@
 	</bean>
 
 	<cm:property-placeholder
-		persistent-id="br.ufba.dcc.wiser.soft_iot.gateway.mapping_devices"
+		persistent-id="br.ufba.dcc.wiser.soft_iot.gateway.fog.config"
 		update-strategy="reload">
 		<cm:default-properties>
-			<cm:property name="DevicesConnected" value="[]" />
-			<cm:property name="debugMode" value="false" />
+			<cm:property name="Config" value="[]" />
+			<cm:property name="debugMode" value="false" ></cm:property>
 		</cm:default-properties>
 	</cm:property-placeholder>
 
