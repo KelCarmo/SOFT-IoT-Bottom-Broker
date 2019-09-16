@@ -111,6 +111,8 @@ public class ClientMQTT implements MqttCallbackExtended {
 
     @Override
     public void connectComplete(boolean reconnect, String serverURI) {
+    	byte[] b = "bytes".getBytes();
+    	this.publicar("CONNECTED/1/1", b, 1);
         System.out.println("Cliente MQTT " + (reconnect ? "reconectado" : "conectado") + " com o broker " + serverURI);
     }
 

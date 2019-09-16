@@ -99,7 +99,8 @@ public class Listener implements IMqttMessageListener {
 					
 					System.out.println("TOP_K => " + top_k.toString());
 					System.out.println("=========================================");
-					clienteMQTT
+					byte[] b = top_k.toString().getBytes();					
+					clienteMQTT.publicar("TOP_K_HEALTH_RES/" + params[1], b, 1);
 				}
 				
 

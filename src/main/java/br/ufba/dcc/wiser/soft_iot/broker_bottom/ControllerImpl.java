@@ -30,9 +30,11 @@ public class ControllerImpl implements Controller{
 			this.clienteIot = new ClientIotService();
 		 	clienteMQTT = new ClientMQTT("tcp://localhost:1883", null, null);
 	        clienteMQTT.iniciar();
-	        this.loadConnectedDevices(clienteIot.getApiIot("http://localhost:8181/cxf/iot-service/devices"));
-
-	        new Listener(this, clienteMQTT, "TOP_K_HEALTH/#", 1);
+	        String devices = clienteIot.getApiIot("http://localhost:8181/cxf/iot-service/devices");
+//	        if(devices != null) System.out.println("Conectado com Broker de FOG com sucesso!!!");
+        	this.loadConnectedDevices(devices);
+        	new Listener(this, clienteMQTT, "TOP_K_HEALTH/#", 1);
+        	
 	        
 	}
 	
@@ -78,6 +80,7 @@ public class ControllerImpl implements Controller{
 				}
 				device.setSensors(listSensors);
 			}
+			
 		} catch (JsonParseException e) {
 			System.out.println("Verify the correct format of 'DevicesConnected' property in configuration file."); 
 		} catch (JsonMappingException e) {
@@ -86,6 +89,7 @@ public class ControllerImpl implements Controller{
 			e.printStackTrace();
 		}
 		this.listDevices = listDevices;
+		System.out.println("Qtd from devices: " + this.listDevices.size());
 	}
 	
 	public Device getDeviceById(String deviceId){
