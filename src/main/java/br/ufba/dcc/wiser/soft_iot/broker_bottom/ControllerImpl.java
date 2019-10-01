@@ -18,7 +18,10 @@ import br.ufba.dcc.wiser.soft_iot.entities.*;
 public class ControllerImpl implements Controller{
 	
 	private List<Device> listDevices; 
-	private String strJsonDevices;
+	private String ip;
+	private String port;
+	private String user;
+	private String pass;
 	private boolean debugModeValue;
 	private  ClientMQTT clienteMQTT;
 	private  ClientIotService clienteIot;
@@ -28,7 +31,7 @@ public class ControllerImpl implements Controller{
 		//printlnDebug("Starting mapping of connected devices...");		
 		// TODO Auto-generated method stub
 			this.clienteIot = new ClientIotService();
-		 	clienteMQTT = new ClientMQTT("tcp://localhost:1883", null, null);
+		 	clienteMQTT = new ClientMQTT("tcp://"  + this.ip + ":" + this.port, this.user, this.pass);
 	        clienteMQTT.iniciar();
 	        String devices = clienteIot.getApiIot("http://localhost:8181/cxf/iot-service/devices");
 //	        if(devices != null) System.out.println("Conectado com Broker de FOG com sucesso!!!");
@@ -105,16 +108,44 @@ public class ControllerImpl implements Controller{
 			System.out.println(str);
 	}
 
-	public void setStrJsonDevices(String strJsonDevices) {
-		this.strJsonDevices = strJsonDevices;
-	}
-
 	public List<Device> getListDevices() {
 		return listDevices;
 	}
 
 	public void setDebugModeValue(boolean debugModeValue) {
 		this.debugModeValue = debugModeValue;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getPort() {
+		return port;
+	}
+
+	public void setPort(String port) {
+		this.port = port;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 }

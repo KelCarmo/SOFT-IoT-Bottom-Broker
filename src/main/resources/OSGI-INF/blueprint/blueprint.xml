@@ -25,15 +25,21 @@
 	<bean id="entitiesController"
 		class="br.ufba.dcc.wiser.soft_iot.broker_bottom.ControllerImpl"
 		init-method="start" destroy-method="stop">
-		<property name="strJsonDevices" value="${DevicesConnected}" />
+		<property name="ip" value="${ip}" />
+		<property name="port" value="${port}" />
+		<property name="user" value="${user}" />
+		<property name="pass" value="${pass}" />
 		<property name="debugModeValue" value="${debugMode}" />
 	</bean>
 
 	<cm:property-placeholder
-		persistent-id="br.ufba.dcc.wiser.soft_iot.gateway.fog.config"
+		persistent-id="br.ufba.dcc.wiser.soft_iot.broker.bottom.config"
 		update-strategy="reload">
 		<cm:default-properties>
-			<cm:property name="Config" value="[]" />
+			<cm:property name="ip" value="localhost" />
+			<cm:property name="port" value="1883" />
+			<cm:property name="user" value="" />
+			<cm:property name="pass" value="" />
 			<cm:property name="debugMode" value="false" ></cm:property>
 		</cm:default-properties>
 	</cm:property-placeholder>

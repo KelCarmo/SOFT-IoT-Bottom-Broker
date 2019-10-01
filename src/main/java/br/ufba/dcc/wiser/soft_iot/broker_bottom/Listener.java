@@ -51,7 +51,7 @@ public class Listener implements IMqttMessageListener {
     @Override
     public synchronized void messageArrived( final String topic, final MqttMessage message) throws Exception {
 //        System.out.println("Mensagem recebida:");
-//        System.out.println("\tTópico: " + topico);
+//        System.out.println("\tTopico: " + topico);
 //        System.out.println("\tMensagem: " + new String(mm.getPayload()));
 //        System.out.println("");
     	

@@ -48,7 +48,7 @@ public class ClientMQTT implements MqttCallbackExtended {
         try {
             return client.subscribeWithResponse(topicos, qoss, listners);
         } catch (MqttException ex) {
-            System.out.println(String.format("Erro ao se inscrever nos tópicos %s - %s", Arrays.asList(topicos), ex));
+            System.out.println(String.format("Erro ao se inscrever nos topicos %s - %s", Arrays.asList(topicos), ex));
             return null;
         }
     }
@@ -60,7 +60,7 @@ public class ClientMQTT implements MqttCallbackExtended {
         try {
             client.unsubscribe(topicos);
         } catch (MqttException ex) {
-            System.out.println(String.format("Erro ao se desinscrever no tópico %s - %s", Arrays.asList(topicos), ex));
+            System.out.println(String.format("Erro ao se desinscrever no topico %s - %s", Arrays.asList(topicos), ex));
         }
     }
 
@@ -95,9 +95,9 @@ public class ClientMQTT implements MqttCallbackExtended {
         try {
             if (client.isConnected()) {
                 client.publish(topic, payload, qos, retained);
-                System.out.println(String.format("Tópico %s publicado. %dB", topic, payload.length));
+                System.out.println(String.format("Topico %s publicado. %dB", topic, payload.length));
             } else {
-                System.out.println("Cliente desconectado, não foi possível publicar o tópico " + topic);
+                System.out.println("Cliente desconectado, não foi possível publicar o topico " + topic);
             }
         } catch (MqttException ex) {
             System.out.println("Erro ao publicar " + topic + " - " + ex);
