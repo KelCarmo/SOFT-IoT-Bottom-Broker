@@ -28,19 +28,19 @@
 		<property name="ip" value="${ip}" />
 		<property name="port" value="${port}" />
 		<property name="user" value="${user}" />
-		<property name="pass" value="${pass}" />
-		<property name="debugModeValue" value="${debugMode}" />
+		<property name="pass" value="${pass}" ></property>
+		<property name="debugModeValue" value="${debugModeValue}" ></property>
 	</bean>
 
 	<cm:property-placeholder
-		persistent-id="br.ufba.dcc.wiser.soft_iot.broker.bottom.config"
+		persistent-id="br.ufba.dcc.wiser.soft_iot.broker_bottom"
 		update-strategy="reload">
 		<cm:default-properties>
 			<cm:property name="ip" value="localhost" />
 			<cm:property name="port" value="1883" />
 			<cm:property name="user" value="" />
 			<cm:property name="pass" value="" />
-			<cm:property name="debugMode" value="false" ></cm:property>
+			<cm:property name="debugModeValue" value="true" ></cm:property>
 		</cm:default-properties>
 	</cm:property-placeholder>
 

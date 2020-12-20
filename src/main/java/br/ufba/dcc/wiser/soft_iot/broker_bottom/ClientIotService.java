@@ -44,9 +44,9 @@ public class ClientIotService {
     	return null;
     }
  
-    public static void main(String[] args) throws JAXBException {
-    	ClientIotService novo = new ClientIotService();
-    	System.out.println(novo.getApiIot("http://localhost:8181/cxf/iot-service/devices"));
-       
-    }
+//    public static void main(String[] args) throws JAXBException {
+//    	ClientIotService novo = new ClientIotService();
+//    	System.out.println(novo.getApiIot("http://localhost:8181/cxf/iot-service/devices"));
+//       
+//    }
 }
